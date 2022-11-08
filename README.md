@@ -18,6 +18,15 @@ Berikut adalah perbedaannya:
 - MyApp: Berfungi sebagai widget root yang menampilkan keseluruhan aplikasi.
 - CounterPage: Berfungsi menampilkan halaman utama berisi display counter dan tombol untuk mengubah counter tersebut. Widget ini memanage state counter.
 - CounterDisplay: Berfungsi untuk menambilkan ganjil/genap counter, dan nilai counter itu sendiri. Widget ini memiliki field counter yang di pass dari parentnya.
+- MaterialApp: Membuat aplikasi berbasis material design.
+- Scaffold: Merepresentasikan struktur layout.
+- Center: Memposisikan child di tengah.
+- Padding: Memberi padding atau jarak antara child dengan parentnya.
+- Align: Memposisikan child di pojok parentnya.
+- Stack: Memposisikan child relatif dari sisi-sisi box nya.
+- FloatingActionButton: Untuk merepresentasikan tombol increment/decrement.
+- Icon: Merepresentasikan icon pada button.
+- Text: Merepresentasikan teks.
 
 ### Fungsi dari setState
 setState berfungsi untuk mengubah state pada widget. Fungsi setState dapat mengubah UI secara dinamis.
