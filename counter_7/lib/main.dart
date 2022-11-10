@@ -68,6 +68,7 @@ class _CounterPageState extends State<CounterPage> {
             padding: const EdgeInsets.all(20.0),
             child: Stack(
               children: <Widget>[
+                if (_counter > 0)
                 Align(
                     alignment: Alignment.bottomLeft,
                     child: FloatingActionButton(
