@@ -27,15 +27,39 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
             onChanged: _onFormChange,
             child: Column(
               children: [
-                TextFormField(),
-                TextFormField(),
-                DropdownButtonFormField<BudgetType>(
-                    items: BudgetType.values
-                        .map<DropdownMenuItem<BudgetType>>((BudgetType type) {
-                      return DropdownMenuItem<BudgetType>(
-                          value: type, child: Text(type.name));
-                    }).toList(),
-                    onChanged: (e) {}),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Judul",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Nominal",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DropdownButtonFormField<BudgetType>(
+                      items: BudgetType.values
+                          .map<DropdownMenuItem<BudgetType>>((BudgetType type) {
+                        return DropdownMenuItem<BudgetType>(
+                            value: type, child: Text(type.name));
+                      }).toList(),
+                      decoration: InputDecoration(
+                        labelText: "Jenis",
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (e) {},
+                  ),
+                ),
                 ElevatedButton(
                     onPressed: _onSubmitBtnPressed, child: Text("Simpan"))
               ],
