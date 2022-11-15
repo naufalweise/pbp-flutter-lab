@@ -30,7 +30,7 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Judul",
                       border: OutlineInputBorder(),
                     ),
@@ -39,7 +39,7 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Nominal",
                       border: OutlineInputBorder(),
                     ),
@@ -53,7 +53,7 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                         return DropdownMenuItem<BudgetType>(
                             value: type, child: Text(type.name));
                       }).toList(),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Jenis",
                         border: OutlineInputBorder(),
                       ),
