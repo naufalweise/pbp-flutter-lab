@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AddBudgetPage extends StatefulWidget {
-  AddBudgetPage({super.key, required this.addBudget});
-  void Function(Budget budget) addBudget;
+  const AddBudgetPage({super.key, required this.addBudget});
+  final void Function(Budget budget) addBudget;
 
   @override
   State<StatefulWidget> createState() => _AddBudgetPageState();
@@ -14,21 +14,21 @@ class AddBudgetPage extends StatefulWidget {
 class _AddBudgetPageState extends State<AddBudgetPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _formChanged = false;
-  Budget _newBudget = Budget.fromUserInput();
+  final Budget _newBudget = Budget.fromUserInput();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Form Budget"),
+        title: const Text("Form Budget"),
       ),
-      drawer: AppMenu(),
+      drawer: const AppMenu(),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Form(
             key: _formKey,
             onChanged: _onFormChange,
-            child: Column(
+            child: ListView(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -88,6 +88,12 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                           _newBudget.type = e!;
                         });
                       },
+                    validator: (e) {
+                        if (e == null) {
+                          return "Jenis harus diisi!";
+                        }
+                        return null;
+                    },
                   ),
                 ),
                 ElevatedButton(
@@ -105,6 +111,7 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
   void _onSubmitBtnPressed() {
     if (_formKey.currentState!.validate()) {
       _handleAddNewBudget();
+
     }
   }
 
