@@ -1,9 +1,11 @@
 import 'package:counter_7/menu/app_menu.dart';
 import 'package:counter_7/models/budget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AddBudgetPage extends StatefulWidget {
-  const AddBudgetPage({super.key});
+  AddBudgetPage({super.key, required this.addBudget});
+  void Function(Budget budget) addBudget;
 
   @override
   State<StatefulWidget> createState() => _AddBudgetPageState();
@@ -12,6 +14,7 @@ class AddBudgetPage extends StatefulWidget {
 class _AddBudgetPageState extends State<AddBudgetPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _formChanged = false;
+  Budget _newBudget = Budget.fromUserInput();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,11 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                       labelText: "Judul",
                       border: OutlineInputBorder(),
                     ),
+                    onChanged: (e) {
+                      setState(() {
+                        _newBudget.judul = e;
+                      });
+                    },
                   ),
                 ),
                 Padding(
@@ -43,6 +51,13 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                       labelText: "Nominal",
                       border: OutlineInputBorder(),
                     ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    onChanged: (String? val) {
+                      setState(() {
+                        _newBudget.nominal = int.parse(val!);
+                      });
+                    },
                   ),
                 ),
                 Padding(
@@ -57,7 +72,11 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                         labelText: "Jenis",
                         border: OutlineInputBorder(),
                       ),
-                      onChanged: (e) {},
+                      onChanged: (e) {
+                        setState(() {
+                          _newBudget.type = e!;
+                        });
+                      },
                   ),
                 ),
                 ElevatedButton(
@@ -70,5 +89,13 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
 
   void _onFormChange() {}
 
-  void _onSubmitBtnPressed() {}
+  void _onSubmitBtnPressed() {
+    if (_formKey.currentState!.validate()) {
+      _handleAddNewBudget();
+    }
+  }
+
+  void _handleAddNewBudget() {
+    widget.addBudget(_newBudget);
+  }
 }
