@@ -6,10 +6,13 @@ import 'package:counter_7/pages/add_budget_page.dart';
 import 'package:counter_7/pages/data_budget_page.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/pages/counter_page.dart';
+import 'package:intl/intl.dart';
 
 import 'models/budget.dart';
 
+
 void main() {
+  Intl.defaultLocale = 'pt_BR';
   runApp(const MyApp());
 }
 

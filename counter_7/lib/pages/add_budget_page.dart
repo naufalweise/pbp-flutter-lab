@@ -2,6 +2,7 @@ import 'package:counter_7/menu/app_menu.dart';
 import 'package:counter_7/models/budget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class AddBudgetPage extends StatefulWidget {
   const AddBudgetPage({super.key, required this.addBudget});
@@ -15,6 +16,7 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _formChanged = false;
   final Budget _newBudget = Budget.fromUserInput();
+  TextEditingController dateInput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +95,33 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                           return "Jenis harus diisi!";
                         }
                         return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: dateInput,
+                    decoration: const InputDecoration(
+                      labelText: "Tanggal",
+                      border: OutlineInputBorder(),
+                    ),
+                    readOnly: true,
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context, initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2101)
+                      );
+
+                      if(pickedDate != null ){
+                        String formattedDate = DateFormat.yMMMd().format(pickedDate);
+
+                        setState(() {
+                          dateInput.text = formattedDate; //set output date to TextField value.
+                          _newBudget.date = pickedDate;
+                        });
+                      }
                     },
                   ),
                 ),

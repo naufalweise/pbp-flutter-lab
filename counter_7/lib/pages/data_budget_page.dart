@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:counter_7/models/budget.dart';
+import 'package:intl/intl.dart';
 
 import '../menu/app_menu.dart';
 
@@ -36,9 +37,20 @@ class _BudgetDescription extends StatelessWidget {
       child: ListTile(
           title: Text(budget.judul),
           tileColor: Colors.white,
-          subtitle: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text("${budget.nominal}"), Text(budget.type.name)],
+          subtitle: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [ Column(
+                  children: [
+                    Text("${budget.nominal}"),
+                  ],
+                ),  Text(budget.type.name)],
+              ),
+              Row(
+                children: [Text(budget.date != null ? DateFormat.yMMMd().format(budget.date!) : "")],
+              )
+            ],
           )),
     );
   }
