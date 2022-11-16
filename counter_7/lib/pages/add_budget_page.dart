@@ -42,6 +42,11 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                         _newBudget.judul = e;
                       });
                     },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Judul tidak boleh kosong!";
+                      }
+                    },
                   ),
                 ),
                 Padding(
@@ -58,6 +63,12 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
                         _newBudget.nominal = int.parse(val!);
                       });
                     },
+                  validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Nominal harus diisi!";
+                      }
+                      return null;
+                  },
                   ),
                 ),
                 Padding(
@@ -87,7 +98,9 @@ class _AddBudgetPageState extends State<AddBudgetPage> {
     );
   }
 
-  void _onFormChange() {}
+  void _onFormChange() {
+    _formKey.currentState!.validate();
+  }
 
   void _onSubmitBtnPressed() {
     if (_formKey.currentState!.validate()) {
