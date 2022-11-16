@@ -1,9 +1,4 @@
-import 'package:counter_7/models/budget.dart';
-import 'package:counter_7/pages/add_budget_page.dart';
-import 'package:counter_7/pages/data_budget_page.dart';
 import 'package:flutter/material.dart';
-
-import 'package:counter_7/pages/counter_page.dart';
 
 class AppMenu extends StatelessWidget {
   const AppMenu({super.key});
@@ -18,25 +13,19 @@ class AppMenu extends StatelessWidget {
           ListTile(
             title: const Text("counter_7"),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const CounterPage())
-              );
+              Navigator.of(context).pushReplacementNamed("/counter");
             },
           ),
           ListTile(
             title: const Text("Tambah Budget"),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AddBudgetPage())
-              );
+              Navigator.of(context).pushReplacementNamed("/budget/add");
             },
           ),
           ListTile(
             title: const Text("Data Budget"),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) =>  DataBudgetPage(budgets: [Budget(judul: "Judul 1", nominal: 1000, type: BudgetType.pemasukkan), Budget(judul: "Judul 2", nominal: 5000, type: BudgetType.pengeluaran)]))
-              );
+              Navigator.of(context).pushReplacementNamed("/budget/data");
             },
           ),
         ],
