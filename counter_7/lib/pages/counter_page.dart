@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class CounterPage extends StatefulWidget {
   const CounterPage({Key? key}) : super(key: key);
 
-  final String title = "Program Title";
+  final String title = "Program Counter";
 
   @override
   State<CounterPage> createState() => _CounterPageState();
