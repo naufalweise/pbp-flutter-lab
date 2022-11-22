@@ -4,6 +4,7 @@
 
 import 'package:counter_7/pages/add_budget_page.dart';
 import 'package:counter_7/pages/data_budget_page.dart';
+import 'package:counter_7/pages/my_watch_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/pages/counter_page.dart';
 import 'package:intl/intl.dart';
@@ -56,7 +57,8 @@ class _AppState extends State<MyApp> {
         routes: {
           '/counter': (context) => const CounterPage(),
           '/budget/add': (context) => AddBudgetPage(addBudget: _addBudget),
-          '/budget/data': (context) => DataBudgetPage(budgets: _budgets)
+          '/budget/data': (context) => DataBudgetPage(budgets: _budgets),
+          '/mywatchlist': (context) => const MyWatchListPage(),
         }
     );
   }

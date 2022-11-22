@@ -28,6 +28,12 @@ class AppMenu extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed("/budget/data");
             },
           ),
+          ListTile(
+            title: const Text("My Watch List"),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed("/mywatchlist");
+            },
+          )
         ],
       ),
     );
