@@ -83,3 +83,37 @@ Untuk menutup screen dan pindah ke screen yang sebelumnya, gunakan method pop. M
 - Buatlah halaman data budget yang menerima list budget. Gunakan list view untuk menampilkan tiap data budget yang ada.
 - Pada aplikasi utama, tambahkan named routing ke screen-screen yang sudah dibuat. Passlah state list ke halaman data budget, dan method untuk menambahkan budget baru ke halaman add budget.
 - Buatlah widget drawer di file terpisah. Gunakan named push untuk mengganti navigasi ke screen yang sesuai.
+
+## Tugas 9
+
+### Q1: Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Bisa, tetapi kode akan lebih buruk. Dengan model, kode untuk mengeparse dan mengconvert JSON ada di satu kelas terpisah. Selain itu, model juga dapat mengelompokkkan data-data yang saling berkaitan menjadi satu objek, sehingga lebih mudah di mantain.
+
+### Q2: Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+- FutureBuilder: untuk menampilkan data yang berasal dari Future (data yang perlu diambil dulu secara asinkronus).
+- ListView: untuk membuat scrollable list.
+- ListTile: untuk membuat elemen child dari ListView.
+- Card: untuk membuat elemen yang tampilannya seperti kartu.
+- Table: untuk memposisikan elemen dengan layout tabular.
+- ElevatedButton: untuk merepresentasikan tombol.
+- Navigator: untuk menghandle hal-hal yang berhubungan dengan routing (seperti mengganti screen).
+- Center: Memposisikan child di tengah.
+- Padding: Memberi padding atau jarak antara child dengan parentnya.
+
+
+### Q3: Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+- Pertama, saat widget container diinisiasi, akan dipanggil fungsi http.get untuk melakukan permintaan data, Hasil dari fungsi akan disimpan dalam state (bentuknya Future). Selanjutnya setelah mendapat respon, data berupa JSON akan di parse ke objek model. 
+- Saat permintaan data mendapat respon, FutureBuilder akan merender data tersebut dengan widget yang bersesuaian.
+- Sebelum mendapat respon, FutureBuilder akan merender loading screen.
+
+### Q4:  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+- Buatlah widget untuk halaman mywatchlist.
+- Tambahkan named routing di MaterialApp untuk halaman mywatchlist
+- Tambahkan tombol navigasi ke mywatchlist. Panggil Navigator.pushReplacementNamed untuk mengganti screen ke mywatchlist.
+- Buatlah model mywatchlist: field-fieldnya, dan method factory untuk membuat model tersebut dari JSON.
+- Tambahkan state dataList ke widget halaman my watch list, lakukan request pengammbilan data saat inisiasi widget dan assign hasilnya pada state tersebut. 
+- Tambahkan widget FutureBuilder pada method build. Pass objek future, dan builder ke widget FutureBuilder.
+- Pada builder FutureBuilder, render widget list view berisi my watchlist bila data sudah ready.
+- Buatlah widget screen detail my watchlist dengan field mywatchlist. Pada method build, tampilkan info-info mywatchlist.
+- Pada widget list view mywatchlist, tambahkan handler ketika di tap, untuk pindah ke screen mywatchlist detail (bisa pakai Navigator.push), pass dengan objek mywatchlist yang bersesuaian.
+- Tambahkan tombol kembali untuk kembali ke screen awal, bisa menggunakan fungsi Navigator.pop.
